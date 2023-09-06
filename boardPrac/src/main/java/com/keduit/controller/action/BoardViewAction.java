@@ -8,17 +8,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-public class BoardListAction implements Action {
+public class BoardViewAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "board/boardList.jsp";
+        String url = "board/boardView.jsp";
+
+        request.setCharacterEncoding("UTF-8");
+        String num = request.getParameter("num");
 
         BoardDAO bDAO = BoardDAO.getInstance();
-        List<BoardVO> boardList = bDAO.selectAllBoards();
+        bDAO.updateReadCount(num); /* 조회수 증가 */
+        BoardVO bVO = bDAO.selectOne(num);
+        request.setAttribute("board", bVO);
 
-        request.setAttribute("boardList", boardList);
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

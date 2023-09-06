@@ -8,17 +8,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-public class BoardListAction implements Action {
+public class BoardUpdateFormAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "board/boardList.jsp";
+        String url = "board/boardUpdate.jsp";
+        String num = request.getParameter("num");
 
         BoardDAO bDAO = BoardDAO.getInstance();
-        List<BoardVO> boardList = bDAO.selectAllBoards();
+        BoardVO bVO = bDAO.selectOne(num);
+        request.setAttribute("board", bVO);
 
-        request.setAttribute("boardList", boardList);
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

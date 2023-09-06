@@ -9,8 +9,8 @@ public class BoardVO {
     private String email;
     private String title;
     private String content;
-    private int readcount;
-    private Timestamp writedate;
+    private int readCount;
+    private Timestamp writeDate;
 
     public int getNum() {
         return num;
@@ -60,20 +60,20 @@ public class BoardVO {
         this.content = content;
     }
 
-    public int getReadcount() {
-        return readcount;
+    public int getReadCount() {
+        return readCount;
     }
 
-    public void setReadcount(int readcount) {
-        this.readcount = readcount;
+    public void setReadCount(int readCount) {
+        this.readCount = readCount;
     }
 
-    public Timestamp getWritedate() {
-        return writedate;
+    public Timestamp getWriteDate() {
+        return writeDate;
     }
 
-    public void setWritedate(Timestamp writedate) {
-        this.writedate = writedate;
+    public void setWriteDate(Timestamp writeDate) {
+        this.writeDate = writeDate;
     }
 
     @Override
@@ -85,8 +85,8 @@ public class BoardVO {
                 ", email='" + email + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", readcount=" + readcount +
-                ", writedate=" + writedate +
+                ", readcount=" + readCount +
+                ", writedate=" + writeDate +
                 '}';
     }
 }
